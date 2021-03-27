@@ -27,6 +27,7 @@ cable_cost_by_feet = 0.87
 cost_of_purchase = float(feet_of_fiber) * float(cable_cost_by_feet)
 
 # Print a receipt for the user that includes company name, number of feet, calculated cost, and total cost
-print("\nSee your receipt of purchase from", purchasing_company)
-print("You have purchased", feet_of_fiber, "feet of fiber for installation")
-print("Your total cost is $", cost_of_purchase)
+print("\nSee your receipt of purchase from", purchasing_company,
+      "\nYou have purchased", feet_of_fiber, "feet of fiber for installation",
+      "\nYour total cost is $", cost_of_purchase)
+
