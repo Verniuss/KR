@@ -20,8 +20,15 @@ purchasing_company = input("Please type your preferred company of purchase")
 print("You have selected", purchasing_company)
 
 # Prompt the user the number of feet they wish to purchase
-feet_of_fiber = float(input("How many feet of fiber optic cable do you wish to purchase?"))
-print("You have selected", feet_of_fiber)
+# loops back to user so it doesn't error out and not finish the program if they don't type in a number
+# Check if they entered a number. If not kick back to user to change their response to a number
+while True:
+    feet_of_fiber = input("How many feet of fiber optic cable do you wish to purchase?")
+    try:
+        feet_of_fiber = float(feet_of_fiber)
+        break
+    except ValueError:
+        print('You did not enter a number. Please ensure a number is entered at this prompt.')
 
 # Calculate the cost of the purchase
 if feet_of_fiber > 500:
