@@ -37,6 +37,7 @@ def divisionCalculation(arg1, arg2):
 
 
 # Gets first argument for +, -, *, / calculations
+# While True sets up conditions to prevent the user from entering anything that's not a number
 def getArgument1():
     while True:
         arg1 = input("What is your first addition argument?: ")
@@ -49,6 +50,7 @@ def getArgument1():
 
 
 # Gets second argument for +, -, *, / calculations
+# While True sets up conditions to prevent the user from entering anything that's not a number
 def getArgument2():
     while True:
         arg2 = input("What is your second addition argument?: ")
