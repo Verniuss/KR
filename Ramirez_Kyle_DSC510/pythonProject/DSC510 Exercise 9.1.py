@@ -9,6 +9,7 @@
 # Create a new function called process_fie. This function will perform the same operations as
 # pretty_print from week 8 however it will print to a file instead of to the screen.
 
+import os
 wordList = list()
 wordDic = {}
 
@@ -32,11 +33,25 @@ def addWord():
 
 
 # prints the number of words in the file, gives it a header, and prints the dictionary keys and values
-def prettyPrint(wordDic):
-    print("Number of words in the file is: ", len(wordList))
-    print("Word", "Count")
-    for key, value in wordDic.items():
-        print(key, value)
+def processFile(wordDic):
+    filepath = 'C:/Users/Kyle/Documents/GitHub/KR/Ramirez_Kyle_DSC510/pythonProject/'
+    newFile = str(input('What would you like the new file name to be?'))
+    completePath = filepath+newFile+'.txt'
+
+    if os.path.isfile(newFile):  # check if file exists
+        print('File Exists')
+        if os.path.isdir(newFile):  # check if file path exists
+            print('Directory Exists')
+            if os.path.exists(completePath):  # check if complete path exists
+                print('Complete path exists')
+                print('Complete Path', completePath)
+
+    with open(completePath, 'w') as fileHandle:  # open file for writing
+        fileHandle.write('Number of words in the file is: ' + str(len(wordList)))
+        fileHandle.write('\nWord | count')
+        for key, value in wordDic.items():
+            fileHandle.write('\n' + str(key) + '   ' + str(value))
+        fileHandle.close()
 
 
 # main will call each function in the proper order in order to print the number of words in the file
@@ -44,10 +59,9 @@ def prettyPrint(wordDic):
 def main():
     gba_file = open('gettysburg.txt', 'r')
 
-    newFile = input("What would you like the new file name to be?")
     processLine(gba_file)
     wordDic = addWord()
-    prettyPrint(wordDic)
+    processFile(wordDic)
 
 
 if __name__ == "__main__":
