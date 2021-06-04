@@ -186,10 +186,13 @@ def main():
           "If you wish to quit enter 3: ")
     while True:
         get_input = city_or_zip()
+        # This option will proceed to the city functions
         if get_input == 1:
             user_input_city()
+        # This option will proceed to the zipcode functions
         if get_input == 2:
             user_input_zip()
+        # This option will quit the program
         if get_input == 3:
             print("You have elected to exit the program")
             sys.exit()
