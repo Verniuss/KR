@@ -43,8 +43,8 @@ def get_weather_city(city):
                          tp_fahrenheit_min, tp_fahrenheit_max, tp_fahrenheit_min)
         return return_output
     else:
-        print("There is no city by that name")
-        return None
+        no_return = "There is no city by that name"
+        return no_return
 
 
 def get_weather_zip(zipcode):
@@ -71,8 +71,8 @@ def get_weather_zip(zipcode):
                          tp_fahrenheit_min, tp_fahrenheit_max, tp_fahrenheit_min)
         return return_output
     else:
-        print("That is not a valid zip code")
-        return None
+        no_return = "That is not a valid zip code"
+        return no_return
 
 
 def user_input_city():
@@ -82,15 +82,16 @@ def user_input_city():
             get_input_city = str(get_input_city)
             weather = get_weather_city(get_input_city)
             print("Location: {}, {}".format(weather[0], weather[1]))
-            print("Humidity: {}".format(weather[3]))
-            print("Pressure: {}".format(weather[4]))
-            print("Weather Type: {}".format(weather[5]))
-            print("Celsius: {:.2f}°C".format(weather[7]))
-            print("Max Celsius Temperature: {:.2f}°C".format(weather[8]))
-            print("Min Celsius Temperature: {:.2f}°C".format(weather[9]))
-            print("Fahrenheit: {:.2f}°F".format(weather[10]))
-            print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
-            print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[12]))
+            print("Humidity: {}".format(weather[2]))
+            print("Pressure: {}".format(weather[3]))
+            print("Weather Type1: {}".format(weather[4]))
+            print("Weather Type2: {}".format(weather[5]))
+            print("Celsius: {:.2f}°C".format(weather[6]))
+            print("Max Celsius Temperature: {:.2f}°C".format(weather[7]))
+            print("Min Celsius Temperature: {:.2f}°C".format(weather[8]))
+            print("Fahrenheit: {:.2f}°F".format(weather[9]))
+            print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[10]))
+            print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
             break
         except ValueError:
             try:
@@ -110,15 +111,16 @@ def user_input_zip():
             get_input_zip = int(get_input_zip)
             weather = get_weather_zip(get_input_zip)
             print("Location: {}, {}".format(weather[0], weather[1]))
-            print("Humidity: {}".format(weather[3]))
-            print("Pressure: {}".format(weather[4]))
-            print("Weather Type: {}".format(weather[5]))
-            print("Celsius: {:.2f}°C".format(weather[7]))
-            print("Max Celsius Temperature: {:.2f}°C".format(weather[8]))
-            print("Min Celsius Temperature: {:.2f}°C".format(weather[9]))
-            print("Fahrenheit: {:.2f}°F".format(weather[10]))
-            print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
-            print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[12]))
+            print("Humidity: {}".format(weather[2]))
+            print("Pressure: {}".format(weather[3]))
+            print("Weather Type1: {}".format(weather[4]))
+            print("Weather Type2: {}".format(weather[5]))
+            print("Celsius: {:.2f}°C".format(weather[6]))
+            print("Max Celsius Temperature: {:.2f}°C".format(weather[7]))
+            print("Min Celsius Temperature: {:.2f}°C".format(weather[8]))
+            print("Fahrenheit: {:.2f}°F".format(weather[9]))
+            print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[10]))
+            print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
             break
         except ValueError:
             try:
