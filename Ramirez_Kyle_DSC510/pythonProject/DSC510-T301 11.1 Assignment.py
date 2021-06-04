@@ -26,8 +26,6 @@ class CashRegister:
 
     def addItem(self, amount):
         self.price = self.price + amount
-        # self.price = self.price + amount
-        # self.total = self.total + total
 
     def get_total_price(self, price):
         self.price = price
@@ -51,19 +49,17 @@ class CashRegister:
                 register1.addItem(amount=getInput)
                 register2 = CashRegister()
                 register2.add_count(total=1)
-                print(repr)
                 break
             except ValueError:
                 try:
                     getInput = str(getInput)
                     getInput = getInput.upper()
                     if getInput == "DONE":
-                        # register1 = CashRegister.get_count()
-                        # register2 = CashRegister.get_total_price()
+                        register1 = CashRegister.get_count()
+                        register2 = CashRegister.get_total_price()
                         print("Here is your total and the number of items purchased")
-                        # print(register1)
-                        # print(register2)
-                        print(repr())
+                        print(f'Total amount is {register1()}')
+                        print(f'Cost is {locale.currency(register2)}')
                         sys.exit()
                     else:
                         print("You did not enter price or DONE as they are the only valid responses")
