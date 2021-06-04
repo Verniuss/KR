@@ -19,6 +19,7 @@ url_zip = 'http://api.openweathermap.org/data/2.5/weather?zip={},&appid={}'
 acceptable_inputs = (1, 2, 3)
 
 
+# this function will connect to the API with the city and API key
 def get_weather_city(city):
     output = requests.get(url_city.format(city, API_Key))
     if output:
@@ -38,15 +39,17 @@ def get_weather_city(city):
         tp_fahrenheit_max = (tp_kelvin_max - 273.15) * 9 / 5 + 32
         humidity = json['main']['humidity']
         pressure = json['main']['pressure']
+        # This tuple will structure the API response to easily sort and extract the data
         return_output = (city, country, humidity, pressure, weather1, weather2,
                          tp_celsius, tp_celsius_max, tp_celsius_min, tp_fahrenheit,
                          tp_fahrenheit_min, tp_fahrenheit_max, tp_fahrenheit_min)
         return return_output
     else:
-        no_return = "There is no city by that name"
+        no_return = None
         return no_return
 
 
+# this function will connect to the API with the zipcode and API key
 def get_weather_zip(zipcode):
     output = requests.get(url_zip.format(zipcode, API_Key))
     if output:
@@ -66,32 +69,40 @@ def get_weather_zip(zipcode):
         tp_fahrenheit_max = (tp_kelvin_max - 273.15) * 9 / 5 + 32
         humidity = json['main']['humidity']
         pressure = json['main']['pressure']
+        # This tuple will structure the API response to easily sort and extract the data
         return_output = (city, country, humidity, pressure, weather1, weather2,
                          tp_celsius, tp_celsius_max, tp_celsius_min, tp_fahrenheit,
                          tp_fahrenheit_min, tp_fahrenheit_max, tp_fahrenheit_min)
         return return_output
     else:
-        no_return = "That is not a valid zip code"
+        no_return = None
         return no_return
 
 
+# This function handles the user input for city.
+# It handles whether the user entered in a valid response.
+# If a valid response is given by the user it will return the weather as a result
+# If non valid response is given. It will kick back to the user to enter in a valid response
 def user_input_city():
     while True:
         get_input_city = input("Type in the city: ")
         try:
             get_input_city = str(get_input_city)
             weather = get_weather_city(get_input_city)
-            print("Location: {}, {}".format(weather[0], weather[1]))
-            print("Humidity: {}".format(weather[2]))
-            print("Pressure: {}".format(weather[3]))
-            print("Weather Type1: {}".format(weather[4]))
-            print("Weather Type2: {}".format(weather[5]))
-            print("Celsius: {:.2f}°C".format(weather[6]))
-            print("Max Celsius Temperature: {:.2f}°C".format(weather[7]))
-            print("Min Celsius Temperature: {:.2f}°C".format(weather[8]))
-            print("Fahrenheit: {:.2f}°F".format(weather[9]))
-            print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[10]))
-            print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
+            if weather is not None:
+                print("Location: {}, {}".format(weather[0], weather[1]))
+                print("Humidity: {}".format(weather[2]))
+                print("Pressure: {}".format(weather[3]))
+                print("Weather Type1: {}".format(weather[4]))
+                print("Weather Type2: {}".format(weather[5]))
+                print("Celsius: {:.2f}°C".format(weather[6]))
+                print("Max Celsius Temperature: {:.2f}°C".format(weather[7]))
+                print("Min Celsius Temperature: {:.2f}°C".format(weather[8]))
+                print("Fahrenheit: {:.2f}°F".format(weather[9]))
+                print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[10]))
+                print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
+            if weather is None:
+                print("You did not enter in a valid city")
             break
         except ValueError:
             try:
@@ -104,23 +115,30 @@ def user_input_city():
     return get_input_city
 
 
+# This function handles the user input for zipcode.
+# It handles whether the user entered in a valid response.
+# If a valid response is given by the user it will return the weather as a result
+# If non valid response is given. It will kick back to the user to enter in a valid response
 def user_input_zip():
     while True:
         get_input_zip = input("Type in the zip code: ")
         try:
             get_input_zip = int(get_input_zip)
             weather = get_weather_zip(get_input_zip)
-            print("Location: {}, {}".format(weather[0], weather[1]))
-            print("Humidity: {}".format(weather[2]))
-            print("Pressure: {}".format(weather[3]))
-            print("Weather Type1: {}".format(weather[4]))
-            print("Weather Type2: {}".format(weather[5]))
-            print("Celsius: {:.2f}°C".format(weather[6]))
-            print("Max Celsius Temperature: {:.2f}°C".format(weather[7]))
-            print("Min Celsius Temperature: {:.2f}°C".format(weather[8]))
-            print("Fahrenheit: {:.2f}°F".format(weather[9]))
-            print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[10]))
-            print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
+            if weather is not None:
+                print("Location: {}, {}".format(weather[0], weather[1]))
+                print("Humidity: {}".format(weather[2]))
+                print("Pressure: {}".format(weather[3]))
+                print("Weather Type1: {}".format(weather[4]))
+                print("Weather Type2: {}".format(weather[5]))
+                print("Celsius: {:.2f}°C".format(weather[6]))
+                print("Max Celsius Temperature: {:.2f}°C".format(weather[7]))
+                print("Min Celsius Temperature: {:.2f}°C".format(weather[8]))
+                print("Fahrenheit: {:.2f}°F".format(weather[9]))
+                print("Max Fahrenheit Temperature: {:.2f}°F".format(weather[10]))
+                print("Min Fahrenheit Temperature: {:.2f}°F".format(weather[11]))
+            if weather is None:
+                print("You did not enter in a valid zip code")
             break
         except ValueError:
             try:
@@ -133,6 +151,7 @@ def user_input_zip():
     return get_input_zip
 
 
+# This is the initial function to determine what functions to run based on the user response
 def city_or_zip():
     while True:
         get_input = input("For the City selection enter 1. "
