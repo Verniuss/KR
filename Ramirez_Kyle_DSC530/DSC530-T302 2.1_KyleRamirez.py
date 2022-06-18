@@ -1,7 +1,7 @@
 # Week 2
 # 2.1 Programming Assignment
 # Author Kyle Ramirez
-# Date Created: 10-June-2021
+# Date Created: 27-Mar-2022
 # Display the text “Hello World! I wonder why that is always the default coding text to start with”
 # Add two numbers together
 # Subtract a number from another number
